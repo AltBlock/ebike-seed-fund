@@ -124,6 +124,7 @@ contract("EbikePrivateSale", function ([owner, investor, wallet, purchaser, auth
                 });
 
                 it('should reject payments to not whitelisted (from whichever buyers)', async function () {
+                    const investmentAmount = ether(1);
                     await this.crowdsale.buyTokens(unauthorized, { value: investmentAmount, from: authorized }).should.be.rejected;
                     await this.crowdsale.buyTokens(unauthorized, { value: investmentAmount, from: unauthorized }).should.be.rejected;
                 })
